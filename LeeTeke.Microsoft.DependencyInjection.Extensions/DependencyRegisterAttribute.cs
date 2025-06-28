@@ -47,12 +47,12 @@ namespace LeeTeke.Microsoft.DependencyInjection.Extensions
         /// </summary>
         /// <param name="services"></param>
         /// <param name="implementorType"></param>
-        public DependencyRegisterAttribute(Type[] services, Type implementorType)
+        public DependencyRegisterAttribute(Type[] services, Type implementorType, DependencyRegisterType @type = DependencyRegisterType.Singleton)
         {
             Service = null;
             Services = services;
             Implementor = implementorType;
-            Type = DependencyRegisterType.Singleton;
+            Type = @type;
         }
 
     }

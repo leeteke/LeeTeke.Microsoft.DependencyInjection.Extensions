@@ -59,13 +59,37 @@ namespace LeeTeke.Microsoft.DependencyInjection.Extensions
                         }
                         else if (attribute.Services != null)
                         {
-                            //创建实例
-                            var obj = Activator.CreateInstance(attribute.Implementor);
-                            //将每一个接口指向同一个实例
-                            foreach (var service in attribute.Services)
+                            switch (attribute.Type)
                             {
-                                services.AddSingleton(service, p => obj);
+                                case DependencyRegisterType.Singleton:
+                                    services.AddSingleton(attribute.Implementor);
+                                    foreach (var service in attribute.Services)
+                                    {
+                                        services.AddSingleton(service, p => p.GetService(attribute.Implementor));
+                                    }
+
+                                    break;
+                                case DependencyRegisterType.Transient:
+                                    services.AddTransient(attribute.Implementor);
+                                    foreach (var service in attribute.Services)
+                                    {
+                                        services.AddTransient(service, p => p.GetService(attribute.Implementor));
+                                    }
+                                   
+                                    break;
+                                case DependencyRegisterType.Scoped:
+                                    services.AddScoped(attribute.Implementor);
+                                    foreach (var service in attribute.Services)
+                                    {
+                                        services.AddScoped(service, p => p.GetService(attribute.Implementor));
+                                    }
+                                    break;
+                                default:
+                                    break;
                             }
+
+
+                          
 
                         }
 
