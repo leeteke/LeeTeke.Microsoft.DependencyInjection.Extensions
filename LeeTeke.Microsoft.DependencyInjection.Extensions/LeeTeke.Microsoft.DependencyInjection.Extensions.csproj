@@ -10,7 +10,7 @@
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <RepositoryUrl>https://github.com/leeteke/LeeTeke.Microsoft.DependencyInjection.Extensions</RepositoryUrl>
     <PackageTags>ioc;</PackageTags>
-    <Version>1.1.0</Version>
+    <Version>1.1.1</Version>
   </PropertyGroup>
 
   <ItemGroup>

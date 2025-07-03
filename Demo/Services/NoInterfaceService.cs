@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 using LeeTeke.Microsoft.DependencyInjection.Extensions;
 //可以写在任何命名空间上，这里较为直观
 [assembly: DependencyRegister(typeof(NoInterfaceService))]
+[assembly: DependencyRegister([typeof(IMultipleTestA), typeof(IMultipleTestB), typeof(MultipleService)], typeof(MultipleService), DependencyRegisterType.Singleton)]
+
 namespace Demo.Services
 {
     internal class NoInterfaceService

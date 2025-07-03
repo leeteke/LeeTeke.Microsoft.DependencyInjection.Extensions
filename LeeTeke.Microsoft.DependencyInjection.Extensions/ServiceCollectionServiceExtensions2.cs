@@ -65,7 +65,11 @@ namespace LeeTeke.Microsoft.DependencyInjection.Extensions
                                     services.AddSingleton(attribute.Implementor);
                                     foreach (var service in attribute.Services)
                                     {
-                                        services.AddSingleton(service, p => p.GetService(attribute.Implementor));
+                                        //防重注册
+                                        if (service != attribute.Implementor)
+                                        {
+                                            services.AddSingleton(service, p => p.GetService(attribute.Implementor));
+                                        }
                                     }
 
                                     break;
@@ -73,15 +77,23 @@ namespace LeeTeke.Microsoft.DependencyInjection.Extensions
                                     services.AddTransient(attribute.Implementor);
                                     foreach (var service in attribute.Services)
                                     {
-                                        services.AddTransient(service, p => p.GetService(attribute.Implementor));
+                                        //防重注册
+                                        if (service != attribute.Implementor)
+                                        {
+                                            services.AddTransient(service, p => p.GetService(attribute.Implementor));
+                                        }
                                     }
-                                   
+
                                     break;
                                 case DependencyRegisterType.Scoped:
                                     services.AddScoped(attribute.Implementor);
                                     foreach (var service in attribute.Services)
                                     {
-                                        services.AddScoped(service, p => p.GetService(attribute.Implementor));
+                                        //防重注册
+                                        if (service != attribute.Implementor)
+                                        {
+                                            services.AddScoped(service, p => p.GetService(attribute.Implementor));
+                                        }
                                     }
                                     break;
                                 default:
@@ -89,7 +101,7 @@ namespace LeeTeke.Microsoft.DependencyInjection.Extensions
                             }
 
 
-                          
+
 
                         }
 
