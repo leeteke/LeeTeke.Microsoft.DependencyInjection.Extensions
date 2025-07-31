@@ -1,31 +1,43 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFrameworks>net9.0;net8.0;net7.0;net6.0;netstandard2.0;netstandard2.1;net462;net472;net48</TargetFrameworks>
-    <ImplicitUsings>disable</ImplicitUsings>
-    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
-    <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
-    <Description>本项目为Microsoft.DependencyInjection 的扩展方法使用，主要用于注册。</Description>
-    <PackageProjectUrl>https://github.com/leeteke/LeeTeke.Microsoft.DependencyInjection.Extensions</PackageProjectUrl>
-    <PackageReadmeFile>README.md</PackageReadmeFile>
-    <RepositoryUrl>https://github.com/leeteke/LeeTeke.Microsoft.DependencyInjection.Extensions</RepositoryUrl>
-    <PackageTags>ioc;</PackageTags>
-    <Version>1.1.1</Version>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>netstandard2.0</TargetFramework>
+		<LangVersion>latest</LangVersion>
+		<ImplicitUsings>disable</ImplicitUsings>
+		<PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+		<PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+		<Description>本项目为Microsoft.DependencyInjection 的扩展方法使用，主要用于注册。</Description>
+		<PackageProjectUrl>https://github.com/leeteke/LeeTeke.Microsoft.DependencyInjection.Extensions</PackageProjectUrl>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<RepositoryUrl>https://github.com/leeteke/LeeTeke.Microsoft.DependencyInjection.Extensions</RepositoryUrl>
+		<PackageTags>ioc;di;aot;native aot;</PackageTags>
+		<Version>1.2.0</Version>
+		<!-- 标记为 Roslyn 组件 -->
+		<IsRoslynComponent>true</IsRoslynComponent>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+		<EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <None Include="..\LICENSE.txt">
-      <Pack>True</Pack>
-      <PackagePath>\</PackagePath>
-    </None>
-    <None Include="..\README.md">
-      <Pack>True</Pack>
-      <PackagePath>\</PackagePath>
-    </None>
-  </ItemGroup>
+	<ItemGroup>
+		<None Include="..\LICENSE.txt">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+		<None Include="..\README.md">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+	</ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="4.14.0" PrivateAssets="all" />
+		<PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.14.0" PrivateAssets="all" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.0" />
+	</ItemGroup>
+
+	<!--终于，nuget打包的时候识别为源代码生成器项目-->
+	<ItemGroup>
+		<None Include="$(OutputPath)\$(AssemblyName).dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
+	</ItemGroup>
 
 </Project>

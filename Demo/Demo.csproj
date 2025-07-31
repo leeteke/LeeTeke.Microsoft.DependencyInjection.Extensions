@@ -9,7 +9,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\LeeTeke.Microsoft.DependencyInjection.Extensions\LeeTeke.Microsoft.DependencyInjection.Extensions.csproj" />
+    <PackageReference Include="LeeTeke.Microsoft.DependencyInjection.Extensions" Version="1.2.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.7" />
   </ItemGroup>
 
 </Project>

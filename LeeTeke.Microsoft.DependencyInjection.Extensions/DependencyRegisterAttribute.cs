@@ -11,7 +11,6 @@ namespace LeeTeke.Microsoft.DependencyInjection.Extensions
     public sealed class DependencyRegisterAttribute : Attribute
     {
         internal Type Implementor { get;  }
-
         internal Type Service { get;  }
         internal Type[] Services { get; }
         internal DependencyRegisterType Type { get;  }
