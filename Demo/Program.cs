@@ -1,12 +1,13 @@
 ﻿// See https://aka.ms/new-console-template for more information
+using Demo.Dll;
 using Demo.Interfaces;
 using Demo.Services;
-using LeeTeke.Microsoft.DependencyInjection.Extensions;
+using LeeTeke.Microsoft.DependencyInjection.Extensions.AOT;
 using Microsoft.Extensions.DependencyInjection;
 
 
 var services = new ServiceCollection();
-services.AddFromAssembliy();
+services.AddFromAssembliyAOT();
 
 var ioc = services.BuildServiceProvider();
 
@@ -44,6 +45,11 @@ var noInterface_2 = ioc.GetService<NoInterfaceService>();
 Console.WriteLine($"{nameof(noInterface_1)}：{noInterface_1.Msg}");
 Console.WriteLine($"{nameof(noInterface_2)}：{noInterface_2.Msg}");
 Console.WriteLine();
+
+
+var dllTest = ioc.GetService<IDllTest>();
+Console.WriteLine($"{nameof(dllTest)}：{dllTest.Msg}");
+
 
 Console.ReadLine();
 

@@ -1,10 +1,10 @@
 # LeeTeke.Microsoft.DependencyInjection.Extensions
 本项目为Microsoft.DependencyInjection 的扩展方法使用，主要用于注册。  
 
-   ***支持 native AOT***
+   ***可配合 LeeTeke.Microsoft.DependencyInjection.Extensions.AOT使用***
 
  ## Nuget
-[![NUGET](https://img.shields.io/badge/nuget-1.2.0-blue.svg)](https://www.nuget.org/packages/LeeTeke.Microsoft.DependencyInjection.Extensions)
+[![NUGET](https://img.shields.io/badge/nuget-1.2.1-blue.svg)](https://www.nuget.org/packages/LeeTeke.Microsoft.DependencyInjection.Extensions)
 
     dotnet add package LeeTeke.Microsoft.DependencyInjection.Extensions
 
@@ -12,7 +12,6 @@
 ```csharp
 //IOC生成器操作
 using  LeeTeke.Microsoft.DependencyInjection.Extensions;
-
 var services = new ServiceCollection();
 services.AddFromAssembliy();
 var ioc = services.BuildServiceProvider();

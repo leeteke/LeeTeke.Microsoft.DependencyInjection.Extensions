@@ -10,10 +10,8 @@
 		<PackageProjectUrl>https://github.com/leeteke/LeeTeke.Microsoft.DependencyInjection.Extensions</PackageProjectUrl>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<RepositoryUrl>https://github.com/leeteke/LeeTeke.Microsoft.DependencyInjection.Extensions</RepositoryUrl>
-		<PackageTags>ioc;di;aot;native aot;</PackageTags>
-		<Version>1.2.0</Version>
-		<!-- 标记为 Roslyn 组件 -->
-		<IsRoslynComponent>true</IsRoslynComponent>
+		<PackageTags>ioc;di;</PackageTags>
+		<Version>1.2.1</Version>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 		<EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
 	</PropertyGroup>
@@ -30,14 +28,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="4.14.0" PrivateAssets="all" />
-		<PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.14.0" PrivateAssets="all" />
 		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.0" />
 	</ItemGroup>
 
-	<!--终于，nuget打包的时候识别为源代码生成器项目-->
-	<ItemGroup>
-		<None Include="$(OutputPath)\$(AssemblyName).dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
-	</ItemGroup>
 
 </Project>

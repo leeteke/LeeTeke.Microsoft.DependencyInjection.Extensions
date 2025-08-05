@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeeTeke.Microsoft.Dependenc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo", "Demo\Demo.csproj", "{4026BCDE-7341-497C-B6C8-DEE11CF1951D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeeTeke.Microsoft.DependencyInjection.Extensions.AOT", "LeeTeke.Microsoft.DependencyInjection.Extensions.AOT\LeeTeke.Microsoft.DependencyInjection.Extensions.AOT.csproj", "{6CEF5FB7-8FD8-4E04-BB51-1B8D47EC7FAD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo.Dll", "Demo.Dll\Demo.Dll.csproj", "{FD6015AB-6D6B-4C4D-8D8F-394264242CD7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{4026BCDE-7341-497C-B6C8-DEE11CF1951D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4026BCDE-7341-497C-B6C8-DEE11CF1951D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4026BCDE-7341-497C-B6C8-DEE11CF1951D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6CEF5FB7-8FD8-4E04-BB51-1B8D47EC7FAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6CEF5FB7-8FD8-4E04-BB51-1B8D47EC7FAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6CEF5FB7-8FD8-4E04-BB51-1B8D47EC7FAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6CEF5FB7-8FD8-4E04-BB51-1B8D47EC7FAD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD6015AB-6D6B-4C4D-8D8F-394264242CD7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD6015AB-6D6B-4C4D-8D8F-394264242CD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD6015AB-6D6B-4C4D-8D8F-394264242CD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD6015AB-6D6B-4C4D-8D8F-394264242CD7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

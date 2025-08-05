@@ -1,0 +1,126 @@
+﻿using Microsoft.Extensions.DependencyInjection;
+using System;
+using System.Linq;
+using System.Reflection;
+
+namespace LeeTeke.Microsoft.DependencyInjection.Extensions
+{
+    public static class ServiceCollectionServiceExtensions2
+    {
+        private static bool s_initialized;
+        private static readonly object s_initializeLock = new object();
+        public static IServiceCollection AddFromAssembliy(this IServiceCollection services)
+        {
+            return services.AddFromAssembliy(AppDomain.CurrentDomain.GetAssemblies());
+        }
+
+        public static IServiceCollection AddFromAssembliy(this IServiceCollection services, params Assembly[] assemblies)
+        {
+            if (s_initialized)
+            {
+                return services;
+            }
+
+            lock (s_initializeLock)
+            {
+                if (s_initialized)
+                {
+                    return services;
+                }
+
+
+
+                for (int i = 0; i < assemblies.Length; i++)
+                {
+
+
+
+                    var customAttributes = assemblies[i].GetCustomAttributes(typeof(DependencyRegisterAttribute), true);
+                    if (customAttributes == null)
+                    {
+                        continue;
+                    }
+
+                    foreach (DependencyRegisterAttribute attribute in customAttributes.Cast<DependencyRegisterAttribute>())
+                    {
+                        if (attribute.Service != null)
+                        {
+                            switch (attribute.Type)
+                            {
+                                case DependencyRegisterType.Singleton:
+                                    services.AddSingleton(attribute.Service, attribute.Implementor);
+                                    break;
+                                case DependencyRegisterType.Transient:
+
+                                    services.AddTransient(attribute.Service, attribute.Implementor);
+                                    break;
+                                case DependencyRegisterType.Scoped:
+
+                                    services.AddScoped(attribute.Service, attribute.Implementor);
+                                    break;
+                                default:
+                                    break;
+                            }
+
+                        }
+                        else if (attribute.Services != null)
+                        {
+                            switch (attribute.Type)
+                            {
+                                case DependencyRegisterType.Singleton:
+                                    services.AddSingleton(attribute.Implementor);
+                                    foreach (var service in attribute.Services)
+                                    {
+                                        //防重注册
+                                        if (service != attribute.Implementor)
+                                        {
+                                            services.AddSingleton(service, p => p.GetService(attribute.Implementor));
+                                        }
+                                    }
+
+                                    break;
+                                case DependencyRegisterType.Transient:
+                                    services.AddTransient(attribute.Implementor);
+                                    foreach (var service in attribute.Services)
+                                    {
+                                        //防重注册
+                                        if (service != attribute.Implementor)
+                                        {
+                                            services.AddTransient(service, p => p.GetService(attribute.Implementor));
+                                        }
+                                    }
+
+                                    break;
+                                case DependencyRegisterType.Scoped:
+                                    services.AddScoped(attribute.Implementor);
+                                    foreach (var service in attribute.Services)
+                                    {
+                                        //防重注册
+                                        if (service != attribute.Implementor)
+                                        {
+                                            services.AddScoped(service, p => p.GetService(attribute.Implementor));
+                                        }
+                                    }
+                                    break;
+                                default:
+                                    break;
+                            }
+
+
+
+
+                        }
+
+                    }
+
+                }
+
+                s_initialized = true;
+            }
+
+            return services;
+        }
+
+
+    }
+}

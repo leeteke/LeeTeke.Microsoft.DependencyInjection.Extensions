@@ -1,0 +1,41 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+	<TargetFramework>netstandard2.0</TargetFramework>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+	<LangVersion>latest</LangVersion>
+	<PackageTags>ioc;di;aot;nativeaot;</PackageTags>
+	<Version>1.0.0</Version>
+	  <IncludeBuildOutput>false</IncludeBuildOutput>
+	  <IsRoslynComponent>true</IsRoslynComponent>
+	  <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+	  <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
+	  <Authors>Leeteke</Authors>
+	  <PackageProjectUrl>https://github.com/leeteke/LeeTeke.Microsoft.DependencyInjection.Extensions</PackageProjectUrl>
+	  <PackageReadmeFile>README.md</PackageReadmeFile>
+	  <RepositoryUrl>https://github.com/leeteke/LeeTeke.Microsoft.DependencyInjection.Extensions</RepositoryUrl>
+	  <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+  </PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="4.14.0" PrivateAssets="all" />
+		<PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.14.0" PrivateAssets="all" />
+		<PackageReference Include="LeeTeke.Microsoft.DependencyInjection.Extensions" Version="1.1.1" />
+	</ItemGroup>
+	<!--终于，nuget打包的时候识别为源代码生成器项目-->
+	<ItemGroup>
+		<None Include="$(OutputPath)\$(AssemblyName).dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
+	</ItemGroup>
+	<ItemGroup>
+	  <None Update="LICENSE.txt">
+	    <Pack>True</Pack>
+	    <PackagePath>\</PackagePath>
+	  </None>
+	  <None Update="README.md">
+	    <Pack>True</Pack>
+	    <PackagePath>\</PackagePath>
+	  </None>
+	</ItemGroup>
+
+</Project>
