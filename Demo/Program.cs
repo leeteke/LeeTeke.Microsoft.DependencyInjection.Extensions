@@ -3,10 +3,16 @@ using Demo.Dll;
 using Demo.Interfaces;
 using Demo.Services;
 using LeeTeke.Microsoft.DependencyInjection.Extensions.AOT;
+using LeeTeke.Microsoft.DependencyInjection.Extensions;
 using Microsoft.Extensions.DependencyInjection;
+using System.Reflection;
 
 
 var services = new ServiceCollection();
+
+services.AddFromNameSpace("Demo.Dll.NameSpaceTest", DependencyRegisterType.Scoped);
+
+
 services.AddFromAssembliyAOT();
 
 var ioc = services.BuildServiceProvider();
@@ -51,6 +57,10 @@ var dllTest = ioc.GetService<IDllTest>();
 Console.WriteLine($"{nameof(dllTest)}：{dllTest.Msg}");
 
 
+var nTest = ioc.GetService<INameSpaceTest>();
+var nTest2 = ioc.GetService<INameSpaceTest2>();
+Console.WriteLine($"{nameof(nTest)}：{nTest.Msg}");
+Console.WriteLine($"{nameof(nTest2)}：{nTest2.Msg2}");
 Console.ReadLine();
 
 

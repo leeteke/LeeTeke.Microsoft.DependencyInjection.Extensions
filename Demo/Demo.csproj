@@ -8,13 +8,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="LeeTeke.Microsoft.DependencyInjection.Extensions" Version="1.2.1" />
     <PackageReference Include="LeeTeke.Microsoft.DependencyInjection.Extensions.AOT" Version="1.0.0-rc1" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.7" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Demo.Dll\Demo.Dll.csproj" />
+    <ProjectReference Include="..\LeeTeke.Microsoft.DependencyInjection.Extensions\LeeTeke.Microsoft.DependencyInjection.Extensions.csproj" />
   </ItemGroup>
 
 </Project>

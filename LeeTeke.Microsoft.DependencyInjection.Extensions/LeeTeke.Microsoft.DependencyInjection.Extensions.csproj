@@ -11,7 +11,7 @@
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<RepositoryUrl>https://github.com/leeteke/LeeTeke.Microsoft.DependencyInjection.Extensions</RepositoryUrl>
 		<PackageTags>ioc;di;</PackageTags>
-		<Version>1.2.1</Version>
+		<Version>1.2.2</Version>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 		<EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
 	</PropertyGroup>

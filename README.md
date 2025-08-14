@@ -4,7 +4,7 @@
    ***可配合 LeeTeke.Microsoft.DependencyInjection.Extensions.AOT使用***
 
  ## Nuget
-[![NUGET](https://img.shields.io/badge/nuget-1.2.1-blue.svg)](https://www.nuget.org/packages/LeeTeke.Microsoft.DependencyInjection.Extensions)
+[![NUGET](https://img.shields.io/badge/nuget-1.2.2-blue.svg)](https://www.nuget.org/packages/LeeTeke.Microsoft.DependencyInjection.Extensions)
 
     dotnet add package LeeTeke.Microsoft.DependencyInjection.Extensions
 
@@ -13,7 +13,15 @@
 //IOC生成器操作
 using  LeeTeke.Microsoft.DependencyInjection.Extensions;
 var services = new ServiceCollection();
+
+//默认全部
 services.AddFromAssembliy();
+//指定程序集
+service.AddFromAssembliy(typeof(Program).Assembliy);
+//指定命名空间，该方法可不用DependencyRegisterAttribute来描述，适用于DDD领域层领域服务的注册。
+//会扫描该NameSpace下的所有Class,并检查其接口,按照DependencyRegisterType的选项去自动注册。
+services.AddFromNameSpaceImpl("Demo.Dll.NameSpaceTest", DependencyRegisterType.Scoped);
+
 var ioc = services.BuildServiceProvider();
 ```
 
